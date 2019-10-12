@@ -62,7 +62,10 @@ const myHandleSubmit = (values, { setStatus }) => {
 
       const searchedForCharacters = characters.filter(character => {
         console.log("character", character);
-        return character.name.includes(values.searchText);
+
+        const lowerCaseName = character.name.toLowerCase();
+
+        return lowerCaseName.includes(values.searchText.toLowerCase());
       });
 
       console.log(
