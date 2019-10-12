@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import CharacterCard from "./CharacterCard.js";
+import CharacterCard from "./CharacterCard";
 
 const CharacterList = props => {
   // TODO: Add useState to track data from useEffect
