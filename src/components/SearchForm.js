@@ -9,12 +9,15 @@ const SearchForm = props => {
   const { status, touched, errors, values } = props;
 
   useEffect(() => {
+    console.log("status", status);
     if (status) {
-      setSfCharacters([...sfCharacters, status]);
+      setSfCharacters(status);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
+
+  console.log("sfCharacters", sfCharacters);
 
   return (
     <div className="user-form">
@@ -27,9 +30,10 @@ const SearchForm = props => {
         <button type="submit">Submit!</button>
       </Form>
       <section className="character-list">
-        {sfCharacters.map(sfCharacter => (
-          <CharacterCard key={sfCharacter.id} character={sfCharacter} />
-        ))}
+        {sfCharacters.map(sfCharacter => {
+          console.log("sfCharacter", sfCharacter);
+          return <CharacterCard key={sfCharacter.id} character={sfCharacter} />;
+        })}
       </section>
     </div>
   );
@@ -48,7 +52,7 @@ const myMapPropsToValues = props => {
 const myHandleSubmit = (values, { setStatus }) => {
   console.log("submit pressed! ... sending...");
   axios
-    .post("https://rickandmortyapi.com/api/character/", values)
+    .get("https://rickandmortyapi.com/api/character/")
     .then(res => {
       console.log("values", values);
 
@@ -56,11 +60,17 @@ const myHandleSubmit = (values, { setStatus }) => {
 
       console.log("characters", characters);
 
-      setStatus(
-        characters.filter(character => {
-          return character.name.includes(values);
-        })
+      const searchedForCharacters = characters.filter(character => {
+        console.log("character", character);
+        return character.name.includes(values.searchText);
+      });
+
+      console.log(
+        "myHandleSubmit() searchedForCharacters",
+        searchedForCharacters
       );
+
+      setStatus(searchedForCharacters);
     })
     .catch(err => console.log(err));
 };

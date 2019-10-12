@@ -31,7 +31,7 @@ const CharacterList = props => {
     <React.Fragment>
       <section className="character-list">
         {characters.map(character => (
-          <CharacterCard character={character} />
+          <CharacterCard key={character.id} character={character} />
         ))}
       </section>
     </React.Fragment>
