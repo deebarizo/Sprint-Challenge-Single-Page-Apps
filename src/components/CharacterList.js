@@ -28,11 +28,13 @@ const CharacterList = props => {
   console.log("characters", characters);
 
   return (
-    <section className="character-list">
-      {characters.map(character => (
-        <CharacterCard character={character} />
-      ))}
-    </section>
+    <React.Fragment>
+      <section className="character-list">
+        {characters.map(character => (
+          <CharacterCard character={character} />
+        ))}
+      </section>
+    </React.Fragment>
   );
 };
 

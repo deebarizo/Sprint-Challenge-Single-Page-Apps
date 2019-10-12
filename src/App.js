@@ -4,6 +4,7 @@ import WelcomePage from "./components/WelcomePage";
 import CharacterList from "./components/CharacterList";
 import { Route, Link } from "react-router-dom";
 import styled from "styled-components";
+import SearchForm from "./components/SearchForm";
 
 const NavDiv = styled.div`
   display: flexbox;
@@ -27,9 +28,13 @@ export default function App() {
         <NavElementDiv>
           <Link to="/characters">Characters</Link>
         </NavElementDiv>
+        <NavElementDiv>
+          <Link to="/search-form">Search Form</Link>
+        </NavElementDiv>
       </NavDiv>
       <Route exact path="/" component={WelcomePage} />
       <Route path="/characters" component={CharacterList} />
+      <Route path="/search-form" component={SearchForm} />
     </main>
   );
 }
