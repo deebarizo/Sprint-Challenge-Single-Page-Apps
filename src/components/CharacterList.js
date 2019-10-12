@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CharacterCard from "./CharacterCard.js";
 
 const CharacterList = props => {
   // TODO: Add useState to track data from useEffect
@@ -29,7 +30,7 @@ const CharacterList = props => {
   return (
     <section className="character-list">
       {characters.map(character => (
-        <h2 key={character.id}>{character.name}</h2>
+        <CharacterCard character={character} />
       ))}
     </section>
   );
